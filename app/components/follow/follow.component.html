@@ -1,0 +1,28 @@
+<p *ngIf = "count1 == 0">{{loop()}}</p>
+
+<div class="container-fluid">
+ <div class="row content">
+    <div class="col-sm-4 sidenav">
+		<ul><li class = "list-group-item"><ul class = "list-group" *ngFor = "let user of users">
+			<div *ngIf = "user.name != email">
+				<ng-container *ngIf = "cfollows.includes(user.name); then thenBlock; else ElseBlock"></ng-container> 
+				<ng-template #ElseBlock>
+					<li class = "list-group-item" ><h6>{{user.name}}</h6>
+					<button class="btn btn-warning btn-sm"  (click) = "follow(user.name)">
+						<span class="glyphicon glyphicon-plus"></span> 
+					</button></li>
+				</ng-template>
+			</div>
+		</ul></li></ul>
+	</div>
+	<p *ngIf = "count2 == 0">{{printListings()}}</p>
+	<div class="col-sm-8">
+		<ul class = "list-group" *ngFor = "let listing of listings">
+			<div *ngFor = "let follow of splitted">
+			<li class = "list-group-item" *ngIf = "listing.name == follow">{{listing.title}}</li></div>
+		</ul>
+	</div>
+</div>	
+</div>
+
+	
